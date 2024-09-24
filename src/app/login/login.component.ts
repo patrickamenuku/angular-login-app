@@ -11,26 +11,26 @@ import { jwtDecode } from 'jwt-decode';
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   template: `
     <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="flex w-full max-w-4xl bg-[#fefcfc] rounded-lg shadow-lg overflow-hidden">
+      <div class="flex w-full max-w-4xl bg-[#f1f8f8] rounded-lg shadow-lg overflow-hidden">
         <div class="w-1/2 p-8">
           <h2 class="text-2xl font-bold mb-6">Log In</h2>
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <div class="mb-4">
               <label for="email" class="block text-m font-medium text-gray-700">Email</label>
               <input type="email" id="email" formControlName="email" class="mt-4 block w-full rounded-md px-2 py-2 border-2 outline-none border-gray-300 mb-[10px] shadow-sm focus:border-indigo-500">
-              @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+              @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched || loginForm.get('email')?.dirty) {
                 <p class="mt-[-8px] text-sm mb-2 text-red-600">Valid email is required</p>
               }
             </div>
             <div class="mb-6">
               <label for="password" class="block text-m font-medium text-gray-700">Password</label>
               <input type="password" id="password" formControlName="password" class="mt-4 block w-full px-2 py-2 rounded-md border-2 outline-none border-gray-300 shadow-sm focus:border-indigo-500 ">
-              @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+              @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched || loginForm.get('password')?.dirty) {
                 <p class="mt-1 text-sm text-red-600">Password is required</p>
               }
             </div>
             <button class="m-4 p-0.5 rounded-full from-indigo-500 via-pink-500 to-purple-500 bg-gradient-to-r">
-              <span class="block px-[100px] py-2 font-semibold rounded-full text-white transition hover:backdrop-brightness-110">Login</span>
+              <span class="block px-[100px] py-2 font-semibold rounded-full text-white transition hover:backdrop-brightness-50">Login</span>
             </button>
           </form>
           <p class="mt-4 text-center text-sm text-gray-600">
@@ -38,7 +38,7 @@ import { jwtDecode } from 'jwt-decode';
           </p>
         </div>
         <div class="w-1/2">
-          <img src="/assets/login.png" alt="Login" class="object-cover w-full h-full">
+          <img src="loginNoBg.png" alt="Login" class="object-cover mt-[8px] max-w-[440px] max-h-[420px] w-full h-full">
         </div>
       </div>
     </div>
@@ -49,7 +49,7 @@ export class LoginComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', {validators: [Validators.required, Validators.email]}],
       password: ['', Validators.required],
     });
   }

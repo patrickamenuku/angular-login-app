@@ -33,7 +33,7 @@ export const passwordMatchValidator = (): ValidatorFn => {
   imports: [CommonModule, ReactiveFormsModule, RouterLink],
   template: `
     <div class="flex items-center justify-center min-h-screen p-4">
-      <div class="flex w-full max-w-4xl bg-[#fefcfc] rounded-lg shadow-lg overflow-hidden">
+      <div class="flex w-full max-w-4xl bg-[#f1f8f8] rounded-lg shadow-lg overflow-hidden">
         <div class="w-1/2 p-8">
           <h2 class="text-2xl font-bold mb-6">Sign Up</h2>
           <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
@@ -108,7 +108,7 @@ export const passwordMatchValidator = (): ValidatorFn => {
           </p>
         </div>
         <div class="w-1/2">
-          <img src="/assets/signup.png" alt="Signup" class="object-cover w-full h-full">
+          <img src="signup1.png" alt="Signup" class="ml-[5px] object-cover max-w-[440px] max-h-[665px] w-full h-full mt-[5px]">
         </div>
       </div>
     </div>
@@ -119,11 +119,11 @@ export class SignupComponent {
 
   constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
     this.signupForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(3)]],
-      lastName: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', [Validators.required]],
+      firstName: ['', {validators: [Validators.required, Validators.minLength(3)]}],
+      lastName: ['', {validators: [Validators.required, Validators.minLength(3)]}],
+      email: ['', {validators: [Validators.required, Validators.email]}],
+      password: ['', {validators: [Validators.required, Validators.minLength(8)]}],
+      confirmPassword: ['', {validators: [Validators.required]}],
     }, { validators: passwordMatchValidator() });
   }
 

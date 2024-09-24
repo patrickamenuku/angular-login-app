@@ -9,21 +9,23 @@ import { jwtDecode } from 'jwt-decode';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="min-h-screen bg-gray-100 p-8">
-      <h1 class="text-3xl font-bold mb-4">Welcome to the Main Page</h1>
-      <p class="text-xl mb-4">You have successfully logged in!</p>
-      <div class="mb-4">
+    <div class="min-h-screen text-white text-2xl p-8 from-indigo-400 via-pink-500 to-purple-500 bg-gradient-to-r">
+      <div class="ml-[100px] mt-[40px]">
+        <h1 class="text-3xl font-bold mb-[40px]">Welcome to the Main Page</h1>
+        <p class="text-xl mb-[100px]">You have successfully logged in!</p>
+      </div>
+      <div class="w-1/3 ml-[650px]">
+        <img src="main.png" alt="Login" class="object-cover w-full h-full mt-[-250px]">
+      </div>
+      <div class="mb-4 mt-[-250px] ml-[100px]">
         <p><strong>First Name:</strong> {{ userData?.firstName }}</p>
         <p><strong>Last Name:</strong> {{ userData?.lastName }}</p>
         <p><strong>Email:</strong> {{ userData?.email }}</p>
       </div>
-      <div class="mb-4">
+      <div class="mb-4 ml-[100px]">
         <p><strong>Token Expiration (Original):</strong> {{ tokenExp }}</p>
         <p><strong>Token Expiration (Seconds):</strong> {{ tokenExpSeconds }}</p>
         <p><strong>Token Expiration (Minutes):</strong> {{ tokenExpMinutes }}</p>
-      </div>
-      <div class="w-1/2">
-        <img src="/assets/login.png" alt="Login" class="object-cover w-full h-full">
       </div>
     </div>
   `,
