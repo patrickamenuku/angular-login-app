@@ -27,7 +27,7 @@ import { jwtDecode } from 'jwt-decode';
               <input type="password" id="password" formControlName="password" class="mt-4 block w-full px-2 py-2 rounded-md border-2 outline-none border-gray-300 shadow-sm focus:border-indigo-500 ">
               @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched || loginForm.get('password')?.dirty) {
                 <p class="mt-1 text-sm text-red-600">Password is required</p>
-              }
+              } 
             </div>
             <button class="m-4 p-0.5 rounded-full from-indigo-500 via-pink-500 to-purple-500 bg-gradient-to-r">
               <span class="block px-[100px] py-2 font-semibold rounded-full text-white transition hover:backdrop-brightness-50">Login</span>
